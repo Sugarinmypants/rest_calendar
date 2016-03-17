@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="author" content="hiyohoo">
+	<title>rest_calendar</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" charset="utf-8" src="jquery-2.2.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="config.js"></script>
+</head>
+<body>
+	<div id="calendar">
+		<div id="today">
+			<p class="now"><span class="now_year"></span>年<span class="now_month"></span>月<span class="now_date"></span>日&nbsp;星期<span class="now_day"></span></p>
+			<p class="title"></p>
+		</div>
+		<div id="date_content">
+			<div class="show_date">
+				<div id="year-month">
+					<span class="arrow left-a"></span>
+					<p class="alterable"><span class="alter_year"></span><span class="alter_month"></span></p>
+					<span class="arrow right-a"></span>
+				</div>
+				<ul id="days">
+					<li>日</li>
+					<li>一</li>
+					<li>二</li>
+					<li>三</li>
+					<li>四</li>
+					<li>五</li>
+					<li>六</li>
+				</ul>
+				<ul id="dates"></ul>
+				<i class="outerBtn btn" id="showSetting"><i class="innerBtn btn"></i></i>
+			</div>
+			<div class="show_setting">
+				<p class="setting_item setting_1">
+					<input type="text" id="setYear">年
+					<input type="text" id="setMonth">月
+					<input type="text" id="setDate"><label for="setYear">日开始上班</label>
+				</p>
+				<p class="setting_item setting_2">
+					<span style="margin-right:25px;"><label for="setWorkLimit">上班</label><input type="text" id="setWorkLimit">天</span>
+					<span><label for="setRestLimit">休息</label><input type="text" id="setRestLimit">天</span>
+				</p>
+				<i class="outerBtn btn" id="showDate"><i class="innerBtn btn"></i></i>
+				<p id="errorMsg">请输入正确的工作时长</p>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="main.js"></script>
+</html>

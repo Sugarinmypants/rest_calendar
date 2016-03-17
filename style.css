@@ -1,0 +1,169 @@
+body, p, span, div, ul, li，label, input {
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	font-family: "Microsoft YaHei", "Hiragino Sans GB", arial, tahoma, sans-serif;
+}
+ul {
+	*zoom: 1;
+}
+ul::after {
+	content: "";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	clear: both;
+}
+li {
+	list-style: none;
+	float: left;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+#calendar {
+	width: 400px;
+	margin: 120px auto 0;
+	box-shadow: 0 14px 45px rgba(0, 0, 0, 0.25), 0 10px 18px rgba(0, 0, 0, 0.22);
+}
+#today {
+	padding: 20px 25px;
+	margin-bottom: 1px;
+	cursor: pointer;
+}
+#today .title {
+	text-align: right;
+	margin-top: 10px;
+}
+#date_content {
+	padding: 20px 25px;
+	position: relative;
+}
+#year-month {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+#year-month .alterable {
+	vertical-align: top;
+	margin: 0 75px;
+}
+#year-month span, #year-month p {
+	display: inline-block;
+}
+#year-month .alter_year {
+	width: 50px;
+	text-align: left;
+}
+#year-month .alter_month {
+	width: 50px;
+	text-align: right;
+}
+#year-month .arrow {
+	width: 15px;
+	height: 24px;
+	margin-top: 13px;
+	box-shadow: 2px -2px #4e647b inset;
+	border-style: solid;
+	border-width: 0 0 5px 5px;
+	cursor: pointer;
+}
+#year-month .left-a {
+	transform: rotate(45deg);
+}
+#year-month .right-a {
+	transform: rotate(225deg);
+}
+#dates li {
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+}
+#dates li .after {
+	display: block;
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	z-index: -1;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	transition: all .2s;
+}
+#dates .nowDate, #dates .selected {
+	color: #fff!important;
+}
+#dates .nowDate .after, #dates .selected .after {
+	top: 5px;
+	left: 5px;
+	width: 40px;
+	height: 40px;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+#date_content .show_setting {
+	display: none;
+}
+#date_content .setting_item {
+	line-height: 30px;
+	height: 30px;
+}
+#date_content .setting_2 {
+	margin-top: 30px;
+}
+#date_content .setting_item label {
+	cursor: pointer;
+}
+#date_content .setting_item input {
+	width: 50px;
+	margin: 0 5px;
+	text-align: center;
+	font-size: 16px;
+	border: none;
+	outline: none;
+	padding: 2px;
+	color: #fff;
+	border-radius: 2px;
+	ime-mode: disabled;
+}
+#date_content #setYear {
+	margin-left: 0;
+}
+#date_content .left-item {
+	float: left;
+	display: inline-block;
+}
+#date_content .btn {
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	transition: all .2s;
+}
+#date_content .outerBtn {
+	margin: 20px auto 0;
+	padding: 3px;
+	cursor: pointer;
+}
+#date_content .outerBtn:hover {
+	transform: scale(1.5,1.5);
+}
+#date_content .outerBtn:hover .innerBtn {
+	transform: scale(1.2,1.2);
+}
+#errorMsg {
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 100px;
+	width: 200px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 5px;
+}
