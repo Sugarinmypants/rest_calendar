@@ -1,70 +1,69 @@
 var year, month, date, dayNum, day, curYear, curMonth;
 
-$(function(){
-	//初始化配置
-	$("body").css({"background-color":config.base_color,"color":config.base_color});
-	$("#today").css("background-color",config.calendar_bgColor);
-	$("#date_content").css("background-color",config.calendar_bgColor);
-	$("#year-month .arrow").css("border-color",config.base_color);
-	$("#date_content .outerBtn").css("background-color",config.base_color);
-	$("#date_content .innerBtn").css("background-color",config.calendar_bgColor);
-	$(".setting_item input").css("background-color",config.base_color);
-	$("#errorMsg").css("background-color",config.base_color);
-	$(".title").html(config.title);
-	//初始化设置页面数据
-	$("#setYear").val(config.work_year);
-	$("#setMonth").val(config.work_month);
-	$("#setDate").val(config.work_date);
-	$("#setWorkLimit").val(config.work_limit);
-	$("#setRestLimit").val(config.rest_limit);
+//初始化配置
+$("body").css({"background-color":config.base_color,"color":config.base_color});
+$("#today").css("background-color",config.calendar_bgColor);
+$("#date_content").css("background-color",config.calendar_bgColor);
+$("#year-month .arrow").css("border-color",config.base_color);
+$("#date_content .outerBtn").css("background-color",config.base_color);
+$("#date_content .innerBtn").css("background-color",config.calendar_bgColor);
+$(".setting_item input").css("background-color",config.base_color);
+$("#errorMsg").css("background-color",config.base_color);
+$(".title").html(config.title);
+//初始化设置页面数据
+$("#setYear").val(config.work_year);
+$("#setMonth").val(config.work_month);
+$("#setDate").val(config.work_date);
+$("#setWorkLimit").val(config.work_limit);
+$("#setRestLimit").val(config.rest_limit);
 
-	//显示当天日历
-	showNow();
+//显示当天日历
+showNow();
 
-	//点击事件委托
-	//左右箭头改变日历月份并显示
-	$("#calendar").delegate(".left-a", "click", function(){
-		getAlterTime();
-		if (curMonth == 1) {
-			$(".alter_year").html(Number(curYear)-1);
-			$(".alter_month").html("12");
-		} else {
-			$(".alter_month").html(Number(curMonth)-1);
-		}
+//点击事件委托
+//左右箭头改变日历月份并显示
+$("#calendar").delegate(".left-a", "click", function(){
+	getAlterTime();
+	if (curMonth == 1) {
+		$(".alter_year").html(Number(curYear)-1);
+		$(".alter_month").html("12");
+	} else {
+		$(".alter_month").html(Number(curMonth)-1);
+	}
+	showDate();
+});
+$("#calendar").delegate(".right-a", "click", function(){
+	getAlterTime();
+	if (curMonth == 12) {
+		$(".alter_year").html(Number(curYear)+1);
+		$(".alter_month").html("1");
+	} else {
+		$(".alter_month").html(Number(curMonth)+1);
+	}
+	showDate();
+});
+
+//返回当天
+$("#calendar").delegate("#today", "click", function(){
+	//日期验证
+	if (validate()) {
+		showNow();
+	}
+});
+
+//日历页面和设置页面切换
+$("#calendar").delegate("#showSetting", "click", function(){
+	showSetting();
+});
+$("#calendar").delegate("#showDate", "click", function(){
+	//日期验证
+	if (validate()) {
+		$(".alter_year").html($("#setYear").val());
+		$(".alter_month").html($("#setMonth").val());
 		showDate();
-	});
-	$("#calendar").delegate(".right-a", "click", function(){
-		getAlterTime();
-		if (curMonth == 12) {
-			$(".alter_year").html(Number(curYear)+1);
-			$(".alter_month").html("1");
-		} else {
-			$(".alter_month").html(Number(curMonth)+1);
-		}
-		showDate();
-	});
+	}
+});
 
-	//返回当天
-	$("#calendar").delegate("#today", "click", function(){
-		//日期验证
-		if (validate()) {
-			showNow();
-		}
-	});
-
-	//日历页面和设置页面切换
-	$("#calendar").delegate("#showSetting", "click", function(){
-		showSetting();
-	});
-	$("#calendar").delegate("#showDate", "click", function(){
-		//日期验证
-		if (validate()) {
-			$(".alter_year").html($("#setYear").val());
-			$(".alter_month").html($("#setMonth").val());
-			showDate();
-		}
-	});
-})
 
 function showDate() {
 //显示日期
