@@ -221,11 +221,9 @@ function validate() {
 		this.condition = vCondition;
 	}
 	VInput.prototype.v = function() {
-		if (!eval(this.condition)) {
-			return false;
-		}
-		return true;
+		return eval(this.condition);
 	};
+
 	var vYear = new VInput("setYear", "年份", "this.val>=1000 && this.val<=9999 && this.val==parseInt(this.val)"),
 		vMonth = new VInput("setMonth", "月份", "this.val>=1 && this.val<=12 && this.val==parseInt(this.val)"),
 		vDate = new VInput("setDate", "日期", "this.val>=1 && this.val<=vSetedDate && this.val==parseInt(this.val)"),
@@ -243,7 +241,7 @@ function validate() {
 		} else if (!curInput.v()) {
 			showMsg("请输入正确的" + curInput.name + "!");
 			return false;
-		} else if (i === inputsL-1) {
+		} else if (i === inputsL - 1) {
 			return true;
 		}
 	}
