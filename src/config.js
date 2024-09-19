@@ -9,7 +9,7 @@ var config = {
 	"work_date":1,
 
 	//上班时长
-	"work_limit":3,
+	"work_limit":9,
 
 	//休息时长
 	"rest_limit":6,
